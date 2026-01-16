@@ -1,20 +1,10 @@
-import {
-    Body,
-    Controller,
-    Delete,
-    Get,
-    HttpCode,
-    HttpStatus,
-    Param,
-    ParseIntPipe,
-    Post,
-    Put,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { Funcionario } from '../entities/funcionario.entity';
 import { FuncionarioService } from '../services/funcionario.service';
 
 @Controller('/funcionarios')
 export class FuncionarioController {
+
   constructor(private readonly funcionarioService: FuncionarioService) {}
 
   @Get()
@@ -52,4 +42,5 @@ export class FuncionarioController {
   delete(@Param('id', ParseIntPipe) id: number) {
     return this.funcionarioService.delete(id);
   }
+
 }

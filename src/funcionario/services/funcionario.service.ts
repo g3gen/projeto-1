@@ -6,6 +6,7 @@ import { Funcionario } from '../entities/funcionario.entity';
 
 @Injectable()
 export class FuncionarioService {
+
   constructor(
     @InjectRepository(Funcionario)
     private funcionarioRepository: Repository<Funcionario>,
@@ -22,10 +23,7 @@ export class FuncionarioService {
       },
     });
     if (!funcionario) {
-      throw new HttpException(
-        'Funcionario não cadastrado',
-        HttpStatus.NOT_FOUND,
-      );
+      throw new HttpException('Funcionario não cadastrado', HttpStatus.NOT_FOUND);
     }
     return funcionario;
   }
@@ -51,4 +49,5 @@ export class FuncionarioService {
     await this.findById(id);
     return await this.funcionarioRepository.delete(id);
   }
+
 }

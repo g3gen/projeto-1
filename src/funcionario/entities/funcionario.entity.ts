@@ -1,13 +1,9 @@
 import { IsNotEmpty } from 'class-validator';
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn,  UpdateDateColumn } from 'typeorm';
 
 @Entity({ name: 'tb_funcionarios' })
 export class Funcionario {
+
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -25,4 +21,5 @@ export class Funcionario {
 
   @UpdateDateColumn()
   data: Date;
+
 }
