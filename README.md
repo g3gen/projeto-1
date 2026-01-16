@@ -1,98 +1,66 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 📄 DOCUMENTAÇÃO – PROJETO RH
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## 1. Título do Projeto e Modelo de Negócio
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+**Título:** RH Tech – Sistema de Gestão de Colaboradores  
 
-## Description
+**Modelo de Negócio:** Sistema de cadastro de RH para gerenciamento interno de funcionários.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+## 2. Descrição Geral
 
-```bash
-$ npm install
-```
+O projeto consiste em uma **API Backend** desenvolvida para facilitar o gerenciamento de informações de funcionários de uma empresa. O sistema permite:
 
-## Compile and run the project
+* Registro centralizado de colaboradores
+* Atualização de dados salariais e cargos
+* Remoção de registros
+* Consulta rápida de profissionais cadastrados
 
-```bash
-# development
-$ npm run start
+---
 
-# watch mode
-$ npm run start:dev
+## 3. Entidade e Atributos
 
-# production mode
-$ npm run start:prod
-```
+A entidade principal do sistema é **Funcionário** (`Employee`), contendo os seguintes atributos:
 
-## Run tests
+| Atributo        | Tipo                | Descrição                          |
+| --------------- | ------------------- | ---------------------------------- |
+| `id`            | Long / Primary Key  | Identificador único do colaborador |
+| `nome`          | String              | Nome completo do colaborador       |
+| `salario`       | BigDecimal / Double | Valor da remuneração               |
+| `cargo`         | String              | Função exercida na empresa         |
+| `data_admissao` | LocalDate / Date    | Data de entrada na empresa         |
 
-```bash
-# unit tests
-$ npm run test
+---
 
-# e2e tests
-$ npm run test:e2e
+## 4. Funcionalidades Principais (CRUD)
 
-# test coverage
-$ npm run test:cov
-```
+O sistema implementa as seguintes operações fundamentais:
 
-## Deployment
+* **Cadastrar (POST):** Cria um novo registro de colaborador
+* **Listar Todos (GET):** Retorna a lista de todos os funcionários cadastrados
+* **Buscar por ID (GET):** Localiza um colaborador específico pelo seu identificador
+* **Atualizar (PUT):** Permite alterar as informações de um colaborador existente
+* **Deletar (DELETE):** Remove o registro de um colaborador do sistema
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### 🔍 Consulta Específica
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Além do CRUD básico, o sistema conta com um método adicional:
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+* `findAllByCargo(String cargo)` – Filtra e retorna colaboradores de acordo com o cargo informado
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## 5. Tecnologias Utilizadas
 
-Check out a few resources that may come in handy when working with NestJS:
+As seguintes tecnologias são utilizadas no desenvolvimento da aplicação:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+* **Backend:** TypeScript com o framework **NestJS**
+* **Banco de Dados:** MySQL
+* **Testes de API:** Postman ou Insomnia
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 📌 Observações
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Este projeto tem como objetivo o aprendizado e a aplicação prática de conceitos de **API REST**, **CRUD**, **NestJS** e **integração com banco de dados relacional**.
