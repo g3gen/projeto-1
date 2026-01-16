@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Funcionario } from './funcionario/entities/funcionario.entity';
+import { FuncionarioModule } from './funcionario/funcionario.module';
 
 @Module({
   imports: [
@@ -10,9 +12,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: 'root',
       database: 'db_sistemarh',
-      entities: [],
+      entities: [Funcionario],
       synchronize: true,
-    })
+    }),
+    FuncionarioModule,
   ],
   controllers: [],
   providers: [],
