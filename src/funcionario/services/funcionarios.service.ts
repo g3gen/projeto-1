@@ -5,7 +5,7 @@ import { DeleteResult } from 'typeorm/browser';
 import { Funcionario } from '../entities/funcionario.entity';
 
 @Injectable()
-export class FuncionariosModule {
+export class FuncionarioService {
   constructor(
     @InjectRepository(Funcionario)
     private funcionarioRepository: Repository<Funcionario>,
