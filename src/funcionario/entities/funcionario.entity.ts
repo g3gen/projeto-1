@@ -1,5 +1,10 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity({ name: 'tb_funcionarios' })
 export class Funcionario {
@@ -18,7 +23,6 @@ export class Funcionario {
   @Column('decimal', { precision: 10, scale: 2, nullable: false })
   salario: number;
 
-  @IsNotEmpty()
-  @Column({ type: 'date', nullable: false })
-  dataAdmissao: Date;
+  @UpdateDateColumn()
+  data: Date;
 }
