@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { FuncionarioService } from "../services/funcionario.service";
 import { Funcionario } from "../entities/funcionario.entity";
 
@@ -31,6 +31,16 @@ export class FuncionarioController {
         return this.funcionarioService.create(funcionario);
     }
 
-    
+    @Put()
+    @HttpCode(HttpStatus.OK)
+    update(@Body() funcionario: Funcionario): Promise<Funcionario> {
+        return this.funcionarioService.update(funcionario);
+    }
+
+    @Delete('/:id')
+    @HttpCode(HttpStatus.NO_CONTENT)
+    delete(@Param('id', ParseIntPipe) id: number) {
+        return this.funcionarioService.delete(id);
+    }
 
 }
